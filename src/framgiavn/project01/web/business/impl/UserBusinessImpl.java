@@ -1,7 +1,5 @@
 package framgiavn.project01.web.business.impl;
 
-import org.hibernate.LockMode;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.dao.UserDAO;
 
