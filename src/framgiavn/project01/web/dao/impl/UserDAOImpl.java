@@ -25,25 +25,38 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 	public User findById(Integer id, boolean lock) throws Exception {
 		try {
 			Query query = getSession().getNamedQuery("User.SelectUserById");
-			//if (lock)
-				//query.setLockMode("User", LockMode.UPGRADE);
+			if (lock)
+				query.setLockMode("User", LockMode.UPGRADE);
 			query.setParameter("id", id);
 			return (User) query.uniqueResult();
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
 			throw re;
 		}
-	}	
-		
+	}
 
-	public User findByname(String name) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+
+	@Override
+	public User findByName(String name) throws Exception {
+		try {
+			Query query = getSession().getNamedQuery("User.SelectByName");
+			query.setParameter("name", name);
+			return (User) query.uniqueResult();
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
 	}
 
 	@Override
-	public User findByName(String username) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public User findByEmail(String email) throws Exception {
+		try {
+			Query query = getSession().getNamedQuery("User.SelectByEmail");
+			query.setParameter("email", email);
+			return (User) query.uniqueResult();
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
 	}
 }
