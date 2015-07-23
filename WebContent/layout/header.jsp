@@ -27,7 +27,7 @@ uri="http://www.springframework.org/security/tags"%>
                         <a href="<s:url value="/courses/"/> ">Course</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="<s:url value="/login/"/> ">Login</a>
+                        <a href="<s:url value="/login"/> ">Login</a>
                     </li>      
                 </ul>
             </div>
