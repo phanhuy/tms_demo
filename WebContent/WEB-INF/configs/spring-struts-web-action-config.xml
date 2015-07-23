@@ -9,4 +9,8 @@
 		scope="prototype">
 		<property name="userBusiness" ref="UserBusiness" />
 	</bean>
+	<bean id="springCourseAction" class="framgiavn.project01.web.action.CourseAction"
+		scope="prototype">
+		<property name="courseBusiness" ref="CourseBusiness" />
+	</bean>
 </beans>
