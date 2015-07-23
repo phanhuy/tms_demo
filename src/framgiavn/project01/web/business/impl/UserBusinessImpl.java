@@ -1,5 +1,6 @@
 package framgiavn.project01.web.business.impl;
 
+
 import java.util.Date;
 import java.util.Map;
 
@@ -38,7 +39,6 @@ public class UserBusinessImpl  implements UserBusiness  {
 		}
 	}
 
-	
 	public User findByName(String name) throws Exception {
 		try {
 			return getUserDAO().findByName(name);
