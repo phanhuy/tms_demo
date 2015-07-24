@@ -26,7 +26,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 		try {
 			Query query = getSession().getNamedQuery("User.SelectUserById");
 			if (lock)
-				query.setLockMode("User", LockMode.UPGRADE);
+				query.setLockMode("user", LockMode.UPGRADE);
 			query.setParameter("id", id);
 			return (User) query.uniqueResult();
 		} catch (RuntimeException re) {
@@ -34,7 +34,6 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 			throw re;
 		}
 	}
-
 
 	@Override
 	public User findByName(String name) throws Exception {

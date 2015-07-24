@@ -6,7 +6,7 @@
 	<br />
 	<br />
 	<br /> &nbsp;&nbsp;&nbsp;The system has been shutdown, please wait a
-	moment!
+	moment!	
 	<%
  	Exception exception = (Exception) request.getAttribute("exception");
  	//exception.printStackTrace(response.getWriter());

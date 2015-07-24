@@ -63,6 +63,7 @@ public class UserBusinessImpl  implements UserBusiness  {
 			return null;
 		}		
 		User user = getUserDAO().findByEmail(email);
+	
 		if (user != null && user.getPassword().equals(Helpers.encryptMd5(pass))) {										
 			return user;
 		}

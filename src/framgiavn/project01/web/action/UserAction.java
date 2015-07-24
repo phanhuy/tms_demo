@@ -68,11 +68,12 @@ public class UserAction extends ActionSupport {
 		String input_email = user.getEmail();
 		String input_pass = user.getPassword();
 		user = userBusiness.login(input_email, input_pass);
-		if (user == null) {
+		if (user == null) {			
 			session = ActionContext.getContext().getSession();
 			session.put("logined", "false");
 			return ERROR;
 		} else {			
+				//System.out.println("Test findById function:  "+userBusiness.findById(user.getId()).getEmail());
 				session = ActionContext.getContext().getSession();
 				session.put("logined", "true");
 				session.put("context", new Date());

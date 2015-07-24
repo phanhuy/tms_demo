@@ -6,4 +6,4 @@ Name: <s:property value="course.name"/><br>
 Detail: <s:property value="course.detail" /><br>
 <form></form>
 <a href="<s:url value="/courses/delete%{course.id}"/>">Delete</a>
-<a href="<s:url value="/courses/%{course.id}/edit"/>">Edit</a>
+<a href="<s:url value="/courses/edit%{course.id}"/>">Edit</a>
