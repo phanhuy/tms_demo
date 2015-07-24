@@ -36,7 +36,6 @@ public class CourseAction extends ActionSupport {
 	}
 	
 	public String listAllCourse() {
-		
 		courseList = courseBusiness.listCourse();
 		
 		return SUCCESS;
@@ -52,18 +51,16 @@ public class CourseAction extends ActionSupport {
 	}
 	
 	public String newCourse() {
-		
 		course.setStartDate(new Date());
-		courseBusiness.addOrupdateCourse(course);
+		courseBusiness.addCourse(course);
 		courseList = null;
 		courseList = courseBusiness.listCourse();
 		
 		return SUCCESS;
 	}
 	
-	public String updateCourse() {
-		
-		courseBusiness.addOrupdateCourse(course);
+	public String updateCourse() throws Exception {
+		courseBusiness.updateCourse(course);
 		courseList = null;
 		courseList = courseBusiness.listCourse();
 		

@@ -8,11 +8,13 @@ public interface CourseDAO {
 
 	public List<Course> listCourse();
 	
-	public Course findById( Integer id) throws Exception;
+	public void addCourse(Course course);
 	
-	public void addOrupdateCourse(Course course);
+	public void updateCourse(Course course);
 	
 	public void deleteCourse(Integer id);
+
+	public Course findById(Integer id, boolean lock) throws Exception;
 	
 	
 }
