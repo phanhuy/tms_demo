@@ -16,7 +16,7 @@
 			<result name="success">AllCourse</result>
 		</action>
 		
-		<action name="/*" class="springCourseAction" method="showCourse">
+		<action name="detail*" class="springCourseAction" method="showCourse">
 			<param name="course.id">{1}</param>
 			<result name="success">Course.Info</result>
 		</action>
@@ -32,7 +32,7 @@
 		    <result name="error">Course.Update</result>
 		</action>
 		
-		<action name="*edit" class="springCourseAction" method="editCoursePage">
+		<action name="edit*" class="springCourseAction" method="editCoursePage">
 			<param name="course.id">{1}</param>
 		    <result>Course.Update</result>
 		</action>

@@ -10,7 +10,9 @@ public interface CourseBusiness {
 	
 	Course findById(Integer id) throws Exception;
 
-	void addOrupdateCourse(Course course);
+	void addCourse(Course course);
+	
+	void updateCourse(Course course) throws Exception;
 	
 	void deleteCourse(Integer id);
 }

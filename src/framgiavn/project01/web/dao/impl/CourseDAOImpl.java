@@ -33,26 +33,15 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 	}
 
 	@Override
-	public Course findById(Integer id) throws Exception {
-		log.debug("Find course by id");
+	public Course findById(Integer id, boolean lock) throws Exception {
 		try {
 			Query query = getSession().getNamedQuery("Course.SelectCourseById");
+			if (lock)
+				query.setLockMode("course", LockMode.UPGRADE);
 			query.setParameter("id", id);
-			
 			return (Course) query.uniqueResult();
 		} catch (RuntimeException re) {
-			log.error("Get failed", re);
-			throw re;
-		}
-	}
-
-	@Override
-	public void addOrupdateCourse(Course course) {
-		log.debug("Add or update course");
-		try {
-			getHibernateTemplate().saveOrUpdate(course);
-		} catch (RuntimeException re) {
-			log.error("Add or update failed", re);
+			log.error("get course by id failed", re);
 			throw re;
 		}
 	}
@@ -66,6 +55,28 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 			query.executeUpdate();
 		} catch (RuntimeException re) {
 			log.error("Delete failed");
+			throw re;
+		}
+	}
+
+	@Override
+	public void addCourse(Course course) {
+		log.debug("Add course");
+		try {
+			getHibernateTemplate().save(course);
+		} catch (RuntimeException re) {
+			log.error("Add course failed", re);
+			throw re;
+		}
+	}
+
+	@Override
+	public void updateCourse(Course course) {
+		log.debug("Update course");
+		try {
+			getHibernateTemplate().update(course);
+		} catch (RuntimeException re) {
+			log.error("Update failed", re);
 			throw re;
 		}
 	}

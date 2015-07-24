@@ -11,7 +11,16 @@ public class CourseBusinessImpl implements CourseBusiness {
 
 	private CourseDAO courseDAO;
 	
-	
+	private Course courseDB;
+
+	public Course getCourseDB() {
+		return courseDB;
+	}
+
+	public void setCourseDB(Course courseDB) {
+		this.courseDB = courseDB;
+	}
+
 	public CourseDAO getCourseDAO() {
 		return courseDAO;
 	}
@@ -28,20 +37,38 @@ public class CourseBusinessImpl implements CourseBusiness {
 	@Override
 	public Course findById(Integer id) throws Exception {
 		try{
-			return getCourseDAO().findById(id);
+			return getCourseDAO().findById(id, false);
 		} catch (Exception e) {
 			throw e;
 		}
 	}
 
 	@Override
-	public void addOrupdateCourse(Course course) {
-		courseDAO.addOrupdateCourse(course);
+	public void deleteCourse(Integer id) {
+		courseDAO.deleteCourse(id);
 	}
 
 	@Override
-	public void deleteCourse(Integer id) {
-		courseDAO.deleteCourse(id);
+	public void addCourse(Course course) {
+		courseDAO.addCourse(course);
+		
+	}
+
+	@Override
+	public void updateCourse(Course course) throws Exception {
+		try {
+			Course courseDB = courseDAO.findById(course.getId(), true);
+			courseDB.setId(course.getId());
+			courseDB.setName(course.getName());
+			courseDB.setDetail(course.getDetail());
+			courseDB.setStartDate(course.getStartDate());
+			courseDB.setEndDate(course.getEndDate());
+			
+			courseDAO.updateCourse(courseDB);
+		} catch (Exception e) {
+			throw e;
+		}
+		
 	}
 
 }
