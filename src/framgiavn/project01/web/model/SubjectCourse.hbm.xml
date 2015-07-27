@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="framgiavn.project01.web.model.SubjectCourse" table="subjects_courses" 
+		dynamic-insert="true" dynamic-update="true">
+		<composite-id>
+			<key-property name="course_id" column="course_id" />
+			<key-property name="subject_id" column="subject_id" />
+		</composite-id>
+		<!--
+		<many-to-one name="course_id" class="framgiavn.project01.web.model.Course" column="id" />
+		<many-to-one name="subject_id" class="framgiavn.project01.web.model.Subject" column="id" />
+		-->           
+	</class>
+</hibernate-mapping>

@@ -7,3 +7,20 @@ Detail: <s:property value="course.detail" /><br>
 <form></form>
 <a href="<s:url value="/courses/delete%{course.id}"/>">Delete</a>
 <a href="<s:url value="/courses/edit%{course.id}"/>">Edit</a>
+<br><br>
+<h3>Subject in course:<br></h3>	
+<s:if test="subjectCourseList.size()>0">
+	<br>
+	<s:iterator value="subjectCourseList">
+		<a href="<s:url value="/subjects/detail"/><s:property value="id"/>">
+			<button type="button" class="btn btn-info"><s:property value="name"/></button></a>	
+	</s:iterator>
+</s:if>
+<s:else>
+	<br><br>
+	<div class="alert alert-info" role="alert">
+	  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  <span class="sr-only">Error:</span>
+  		This Course hasn't subject! :D
+	</div>
+</s:else>

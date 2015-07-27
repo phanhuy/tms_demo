@@ -4,7 +4,7 @@
 <br>
 <s:form action="create" >
 	<div class="form-group">
-		<input type="text" name="course.name" value="" id="addCourse_course_name" placeholder="Name" class="form-control">
+		<input type="text" name="course.name" value="" id="addCourse_course_name" placeholder="Course name" class="form-control">
 	</div>
 	<div class="form-group">
 		<textarea name="course.detail" cols="50" rows="5" id="addCourse_course_detail" placeholder="Course detail" class="form-control"></textarea>
