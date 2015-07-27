@@ -79,7 +79,5 @@ public class CourseDAOImpl extends HibernateDaoSupport implements CourseDAO {
 			log.error("Update failed", re);
 			throw re;
 		}
-	}
-	
-
+	}	
 }

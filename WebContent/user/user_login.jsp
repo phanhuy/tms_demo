@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <s:if test="#session.logined == 'true'">
-	You have logged!<br>
+	You have logged!<br>(id:%{user.id})
 	<a href="<s:url value="/logout"/>">Logout</a>
 </s:if>
 <s:else>
@@ -27,9 +27,6 @@
 				<c:if test="${not empty msg}">
 					<div class="msg">${msg}</div>
 				</c:if>
-
-
-
 
 				<form name="loginForm" id="loginform" action="dologin" method="POST">
 
@@ -63,35 +60,3 @@
 	Login failed
 </s:if>
 </s:else>
-
-
-
-
-
-
-
-<!-- 
-<s:if test="#session.logined == 'true'">
-	You have logged!<br>
-	<a href="<s:url value="/logout"/>">Logout</a>
-</s:if>
-<s:else>
-	<s:form action="dologin">
-		<s:textfield name="user.email" label="Email" value="" cols="50"
-			rows="5" />
-		<s:password name="user.password" label="Password" cols="50"
-			maxlength="15" />
-		<s:submit value="Login" />
-	</s:form>
-
-	<s:if test="#session.logined == 'false'">
-	Login failed
-</s:if>
-</s:else>
-
- -->
-
-
-
-
-

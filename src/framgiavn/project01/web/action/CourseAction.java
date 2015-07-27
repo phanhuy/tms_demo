@@ -10,6 +10,10 @@ import framgiavn.project01.web.model.Subject;
 
 public class CourseAction extends ActionSupport {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	CourseBusiness courseBusiness;
 	SubjectBusiness subjectBusiness;
 	Course course;
@@ -83,25 +87,23 @@ public class CourseAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	public String updateCourse() throws Exception {
+	public String updateCourse() throws Exception {		
 		courseBusiness.updateCourse(course);
 		courseList = null;
-		courseList = courseBusiness.listCourse();
-		
+		courseList = courseBusiness.listCourse();		
 		return SUCCESS;
 	}
 	
 	public String destroyCourse() {
 		courseBusiness.deleteCourse(course.getId());
 		courseList = null;
-		courseList = courseBusiness.listCourse();
-		
+		courseList = courseBusiness.listCourse();		
 		return SUCCESS;
 	}
 	
-	public String editCoursePage() {
-		try {
-			course = courseBusiness.findById(course.getId());
+	public String editCoursePage() {		
+		try {			
+			course = courseBusiness.findById(course.getId());						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

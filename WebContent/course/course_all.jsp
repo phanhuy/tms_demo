@@ -1,8 +1,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<h4>Framgia Training Course</h4>
+<h4>All Users</h4>
 <br>
-<a href="<s:url value="/courses/new"/>"><button type="button" class="btn btn-primary">Add Course</button></a>
+<a href="<s:url value="/users/new"/>"><button type="button" class="btn btn-primary">Add User</button></a>
 <br><br>
 
 <s:if test="courseList.size()>0">
