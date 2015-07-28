@@ -67,8 +67,7 @@ public class CourseBusinessImpl implements CourseBusiness {
 			courseDAO.updateCourse(courseDB);
 		} catch (Exception e) {
 			throw e;
-		}
-		
+		}		
 	}
 
 }

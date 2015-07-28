@@ -15,8 +15,10 @@ public class User implements Serializable {
 	private String email;
 	private Integer suppervisor;
 	private String password;
+	private String confirm_pass;
 	private Date  create_at;
 	private Date update_at;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -61,6 +63,12 @@ public class User implements Serializable {
 	}
 	public User() {
 	
+	}
+	public String getConfirm_pass() {
+		return confirm_pass;
+	}
+	public void setConfirm_pass(String confirm_pass) {
+		this.confirm_pass = confirm_pass;
 	}
 	
 	
