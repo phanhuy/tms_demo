@@ -3,19 +3,41 @@ package framgiavn.project01.web.action;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.opensymphony.xwork2.ActionSupport;
-
-import framgiavn.project01.web.business.CourseBusiness;
+import framgiavn.project01.web.business.*;
 import framgiavn.project01.web.model.Course;
-import framgiavn.project01.web.ulti.Logit2;
+import framgiavn.project01.web.model.Subject;
 
 public class CourseAction extends ActionSupport {
 	
 	CourseBusiness courseBusiness;
+	SubjectBusiness subjectBusiness;
 	Course course;
-	public List<Course> courseList = new ArrayList<Course>();
+	Subject subject;
 	
+	public Subject getSubject() {
+		return subject;
+	}
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+	
+	public SubjectBusiness getSubjectBusiness() {
+		return subjectBusiness;
+	}
+	public void setSubjectBusiness(SubjectBusiness subjectBusiness) {
+		this.subjectBusiness = subjectBusiness;
+	}
+
+	public List<Course> courseList = new ArrayList<Course>();
+	public List<Subject> subjectCourseList = new ArrayList<Subject>();
+	
+	public List<Subject> getSubjectCourseList() {
+		return subjectCourseList;
+	}
+	public void setSubjectCourseList(List<Subject> subjectCourseList) {
+		this.subjectCourseList = subjectCourseList;
+	}
 	public CourseBusiness getCourseBusiness() {
 		return courseBusiness;
 	}
@@ -44,6 +66,8 @@ public class CourseAction extends ActionSupport {
 	public String showCourse() {
 		try {
 			course = courseBusiness.findById(course.getId());
+			subjectCourseList = subjectBusiness.listSubjectByCoureId(course.getId());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
