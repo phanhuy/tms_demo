@@ -9,6 +9,7 @@ import framgiavn.project01.web.model.Course;
 import framgiavn.project01.web.model.Subject;
 
 public class SubjectAction extends ActionSupport {
+	private static Integer subject_id;
 	SubjectBusiness subjectBusiness;
 	
 	Subject subject;
@@ -63,18 +64,24 @@ public class SubjectAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	public String updateSubject() {
+	public String updateSubject() throws Exception {
+		subject.setId(subject_id);
+		subjectBusiness.updateSubject(subject);
+		subjectList = null;
+		subjectList = subjectBusiness.listSubject();
 		
 		return SUCCESS;
 	}
 	
 	public String destroySubject() {
+		subjectBusiness.deleteSubject(subject_id);
 		
 		return SUCCESS;
 	}
 	
 	public String  editSubjectPage() {
 		try{
+			subject_id = subject.getId();
 			subject = subjectBusiness.findById(subject.getId());
 		} catch (Exception e) {
 			e.printStackTrace();

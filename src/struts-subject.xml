@@ -21,7 +21,7 @@
 		</action>
 		
 		<action name="delete*" class="springSubjectAction" method="destroySubject">
-			<param name="course.id">{1}</param>
+			<param name="subject.id">{1}</param>
 			<result name="success">AllSubject</result>
 			<result name="error">Subject.Info</result>
 		</action>
@@ -33,7 +33,7 @@
 		</action>
 		
 		<action name="edit*" class="springSubjectAction" method="editSubjectPage">
-			<param name="course.id">{1}</param>
+			<param name="subject.id">{1}</param>
 		    <result>Subject.Update</result>
 		</action>
 	</package>

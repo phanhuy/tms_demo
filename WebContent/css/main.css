@@ -4,6 +4,9 @@
 	position: relative;
 	margin-bottom: 10px;
 }
+div#footer {
+	clear: both;
+}
 
 #header-main #logo-m {
 	position: absolute;

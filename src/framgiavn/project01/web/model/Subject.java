@@ -1,7 +1,6 @@
 package framgiavn.project01.web.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 public class Subject implements Serializable {
@@ -10,7 +9,14 @@ public class Subject implements Serializable {
 	private String name;
 	private String detail;
 	private Set<SubjectCourse> subjectCourses;
+	private Set<Task> tasks;
 
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
 	public Set<SubjectCourse> getSubjectCourses() {
 		return subjectCourses;
 	}
