@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 import framgiavn.project01.web.business.*;
-import framgiavn.project01.web.model.Course;
-import framgiavn.project01.web.model.Subject;
+import framgiavn.project01.web.model.*;
 
 public class SubjectAction extends ActionSupport {
 	private static Integer subject_id;
@@ -15,6 +14,16 @@ public class SubjectAction extends ActionSupport {
 	Subject subject;
 	
 	public List<Subject> subjectList = new ArrayList<Subject>();
+	public List<Subject> taskList = new ArrayList<Subject>();
+	
+
+	public List<Subject> getTaskList() {
+		return taskList;
+	}
+
+	public void setTaskList(List<Subject> taskList) {
+		this.taskList = taskList;
+	}
 
 	public SubjectBusiness getSubjectBusiness() {
 		return subjectBusiness;
@@ -49,6 +58,7 @@ public class SubjectAction extends ActionSupport {
 	public String showSubject() {
 		try {
 			subject = subjectBusiness.findById(subject.getId());
+			taskList = subjectBusiness.listTaskById(subject.getId());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

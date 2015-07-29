@@ -30,6 +30,11 @@
     	left join subject.subjectCourses
     	where course_id=:id
     </query>
+    <query name="Task.SelectTaskBySubjectId">
+    	select task 
+    	from Task task
+    	where task.subject_id=:id
+    </query>
 	<query name="Subject.SelectSubjectById">
     	select subject  
     	from Subject subject

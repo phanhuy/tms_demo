@@ -10,6 +10,8 @@ public interface SubjectDAO {
 	
 	public List<Subject> listSubject();
 	
+	public List<Subject> listTaskById(Integer id, boolean lock);
+	
 	public void addSubject(Subject subject);
 	
 	public void updateSubject(Subject subject);
