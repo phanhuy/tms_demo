@@ -1,6 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<h3>Add new course</h3>
+<h4>Add new course</h4>
 <br>
 <s:form action="create" >
 	<div class="form-group">
@@ -9,7 +9,28 @@
 	<div class="form-group">
 		<textarea name="course.detail" cols="50" rows="5" id="addCourse_course_detail" placeholder="Course detail" class="form-control"></textarea>
 	</div>
-	<div class="form-group">
+	<br><h4>Add subject in course</h4>
+	<s:if test="subjectList.size()>0">
+		<s:iterator value="subjectList">
+			<div class="col-lg-6">
+		    <div class="input-group">
+		      <span class="input-group-addon">
+		        <input type="checkbox" value="${id }" aria-label="...">
+		      </span>
+		      <input type="text" class="form-control" path="" value="${name}" readonly="true">
+		    </div><!-- /input-group -->
+		  	</div><!-- /.col-lg-6 -->
+		</s:iterator>  
+	</s:if>
+	<s:else>
+		<div class="alert alert-danger" role="alert">
+	  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  		<span class="sr-only">Error:</span>
+  				Subject not exist :(
+		</div>
+	</s:else>
+	<br><br>
+	<div class="form-group col-md-8">
 		<input type="submit" id="addCourse_0" value="Add" class="btn btn-default">
 	</div>
 </s:form>

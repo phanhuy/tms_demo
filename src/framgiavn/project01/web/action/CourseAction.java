@@ -34,8 +34,15 @@ public class CourseAction extends ActionSupport {
 	}
 
 	public List<Course> courseList = new ArrayList<Course>();
+	public List<Subject> subjectList = new ArrayList<Subject>();
 	public List<Subject> subjectCourseList = new ArrayList<Subject>();
 	
+	public List<Subject> getSubjectList() {
+		return subjectList;
+	}
+	public void setSubjectList(List<Subject> subjectList) {
+		this.subjectList = subjectList;
+	}
 	public List<Subject> getSubjectCourseList() {
 		return subjectCourseList;
 	}
@@ -107,6 +114,12 @@ public class CourseAction extends ActionSupport {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return SUCCESS;
+	}
+	
+	public String addCoursePage() {
+		subjectList = subjectBusiness.listSubject();
+		
 		return SUCCESS;
 	}
 }

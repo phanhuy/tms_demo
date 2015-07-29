@@ -8,8 +8,8 @@
 			<result name="success">AllCourse</result>
 		</action>
 		
-		<action name="new">
-		    <result>Course.Add</result>
+		<action name="new" class="springCourseAction" method="addCoursePage">
+		    <result name="success">Course.Add</result>
 		</action>
 		
 		<action name="create" class="springCourseAction" method="newCourse">

@@ -94,6 +94,21 @@ public class SubjectDAOImpl extends HibernateDaoSupport implements SubjectDAO{
 			throw re;
 		}
 	}
+
+	@Override
+	public List<Subject> listTaskById(Integer id, boolean lock) {
+		log.debug("List task by subject id");
+		try {
+			Query query = getSession().getNamedQuery("Task.SelectTaskBySubjectId");
+			if(lock)
+				query.setLockMode("subject", LockMode.UPGRADE);
+			query.setParameter("id", id);
+			return query.list();
+		} catch (RuntimeException re) {
+			log.error("get task by subject id failed", re);
+			throw re;
+		}
+	}
 	
 
 }

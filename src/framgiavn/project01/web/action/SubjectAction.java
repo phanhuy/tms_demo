@@ -5,15 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 import framgiavn.project01.web.business.*;
-import framgiavn.project01.web.model.Course;
-import framgiavn.project01.web.model.Subject;
+import framgiavn.project01.web.model.*;
 
 public class SubjectAction extends ActionSupport {
+	private static Integer subject_id;
 	SubjectBusiness subjectBusiness;
 	
 	Subject subject;
 	
 	public List<Subject> subjectList = new ArrayList<Subject>();
+	public List<Subject> taskList = new ArrayList<Subject>();
+	
+
+	public List<Subject> getTaskList() {
+		return taskList;
+	}
+
+	public void setTaskList(List<Subject> taskList) {
+		this.taskList = taskList;
+	}
 
 	public SubjectBusiness getSubjectBusiness() {
 		return subjectBusiness;
@@ -48,6 +58,7 @@ public class SubjectAction extends ActionSupport {
 	public String showSubject() {
 		try {
 			subject = subjectBusiness.findById(subject.getId());
+			taskList = subjectBusiness.listTaskById(subject.getId());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,18 +74,24 @@ public class SubjectAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	public String updateSubject() {
+	public String updateSubject() throws Exception {
+		subject.setId(subject_id);
+		subjectBusiness.updateSubject(subject);
+		subjectList = null;
+		subjectList = subjectBusiness.listSubject();
 		
 		return SUCCESS;
 	}
 	
 	public String destroySubject() {
+		subjectBusiness.deleteSubject(subject_id);
 		
 		return SUCCESS;
 	}
 	
 	public String  editSubjectPage() {
 		try{
+			subject_id = subject.getId();
 			subject = subjectBusiness.findById(subject.getId());
 		} catch (Exception e) {
 			e.printStackTrace();

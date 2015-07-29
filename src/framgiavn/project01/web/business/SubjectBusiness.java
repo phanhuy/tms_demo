@@ -10,6 +10,8 @@ public interface SubjectBusiness {
 	
 	List<Subject> listSubject();
 	
+	List<Subject> listTaskById(Integer id);
+	
 	void addSubject(Subject subject);
 	
 	void updateSubject(Subject subject) throws Exception;

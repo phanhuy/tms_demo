@@ -18,13 +18,22 @@
         <set name="subjectCourses" inverse="true" lazy="false" cascade="all">
         	<key column="subject_id" not-null="true" />
             <one-to-many class="framgiavn.project01.web.model.SubjectCourse" />
-        </set>        
+        </set>    
+        <set name="tasks" inverse="true" lazy="false" cascade="all">
+        	<key column="subject_id" not-null="true" />
+            <one-to-many class="framgiavn.project01.web.model.Task" />
+        </set>    
 	</class>
 	<query name="SubjectCourse.SelectSCById">
     	select subject  
     	from Subject subject
     	left join subject.subjectCourses
     	where course_id=:id
+    </query>
+    <query name="Task.SelectTaskBySubjectId">
+    	select task 
+    	from Task task
+    	where task.subject_id=:id
     </query>
 	<query name="Subject.SelectSubjectById">
     	select subject  
