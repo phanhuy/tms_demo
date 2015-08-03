@@ -15,6 +15,14 @@
 		<action name="create" class="springCourseAction" method="newCourse">
 			<result name="success">AllCourse</result>
 		</action>
+		<action name="add_subject" class="springCourseAction" method="addSC">
+			<result name="success">AllCourse</result>
+		</action>
+		<action name="remove_subject" class="springCourseAction" method="removeSC">
+			<param name="subjectCourse.subject_id">{1}</param>
+			<param name="subjectCourse.course_id">{2}</param>
+			<result name="success">AllCourse</result>
+		</action>
 		
 		<action name="detail*" class="springCourseAction" method="showCourse">
 			<param name="course.id">{1}</param>

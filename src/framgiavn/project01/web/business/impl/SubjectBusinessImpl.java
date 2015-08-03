@@ -75,5 +75,11 @@ class SubjectBusinessImpl implements SubjectBusiness {
 	public List<Subject> listTaskById(Integer id) {
 		return getSubjectDAO().listTaskById(id, false);
 	}
+
+
+	@Override
+	public List<Subject> listSubjectByNotCourseId(Integer id) {
+		return getSubjectDAO().listSubjectNotByCourseId(id, false);
+	}
 	
 }

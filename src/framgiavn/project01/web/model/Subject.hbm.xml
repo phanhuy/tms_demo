@@ -30,6 +30,12 @@
     	left join subject.subjectCourses
     	where course_id=:id
     </query>
+    <query name="SubjectCourse.SelectSCNotById">
+    	select subject  
+    	from Subject subject
+    	where not exists (
+    	from subject.subjectCourses where course_id=:id)
+    </query>
     <query name="Task.SelectTaskBySubjectId">
     	select task 
     	from Task task
