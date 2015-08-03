@@ -3,10 +3,11 @@ package framgiavn.project01.web.action;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.opensymphony.xwork2.ActionSupport;
+
 import framgiavn.project01.web.business.*;
-import framgiavn.project01.web.model.Course;
-import framgiavn.project01.web.model.Subject;
+import framgiavn.project01.web.model.*;
 
 public class CourseAction extends ActionSupport {
 	
@@ -18,7 +19,14 @@ public class CourseAction extends ActionSupport {
 	SubjectBusiness subjectBusiness;
 	Course course;
 	Subject subject;
+	SubjectCourse subjectCourse;
 	
+	public SubjectCourse getSubjectCourse() {
+		return subjectCourse;
+	}
+	public void setSubjectCourse(SubjectCourse subjectCourse) {
+		this.subjectCourse = subjectCourse;
+	}
 	public Subject getSubject() {
 		return subject;
 	}
@@ -36,7 +44,14 @@ public class CourseAction extends ActionSupport {
 	public List<Course> courseList = new ArrayList<Course>();
 	public List<Subject> subjectList = new ArrayList<Subject>();
 	public List<Subject> subjectCourseList = new ArrayList<Subject>();
+	public List<Subject> notSubjectCourseList = new ArrayList<Subject>();
 	
+	public List<Subject> getNotSubjectCourseList() {
+		return notSubjectCourseList;
+	}
+	public void setNotSubjectCourseList(List<Subject> notSubjectCourseList) {
+		this.notSubjectCourseList = notSubjectCourseList;
+	}
 	public List<Subject> getSubjectList() {
 		return subjectList;
 	}
@@ -110,7 +125,9 @@ public class CourseAction extends ActionSupport {
 	
 	public String editCoursePage() {		
 		try {			
-			course = courseBusiness.findById(course.getId());						
+			course = courseBusiness.findById(course.getId());
+			subjectCourseList = subjectBusiness.listSubjectByCoureId(course.getId());
+			notSubjectCourseList = subjectBusiness.listSubjectByNotCourseId(course.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -119,6 +136,18 @@ public class CourseAction extends ActionSupport {
 	
 	public String addCoursePage() {
 		subjectList = subjectBusiness.listSubject();
+		
+		return SUCCESS;
+	}
+	
+	public String addSC() {
+		courseBusiness.addSubjectCourse(subjectCourse);
+		
+		return SUCCESS;
+	}
+	
+	public String removeSC() {
+		courseBusiness.removeSubjectCourse(subjectCourse.getSubject_id(), subjectCourse.getCourse_id());
 		
 		return SUCCESS;
 	}

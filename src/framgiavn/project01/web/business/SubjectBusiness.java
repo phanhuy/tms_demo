@@ -8,6 +8,8 @@ public interface SubjectBusiness {
 
 	List<Subject> listSubjectByCoureId(Integer id);
 	
+	List<Subject> listSubjectByNotCourseId(Integer id);
+	
 	List<Subject> listSubject();
 	
 	List<Subject> listTaskById(Integer id);

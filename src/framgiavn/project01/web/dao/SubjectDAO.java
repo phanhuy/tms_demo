@@ -8,6 +8,8 @@ public interface SubjectDAO {
 
 	public List<Subject> listSubjectByCoureId(Integer id, boolean lock);
 	
+	public List<Subject> listSubjectNotByCourseId(Integer id, boolean lock);
+	
 	public List<Subject> listSubject();
 	
 	public List<Subject> listTaskById(Integer id, boolean lock);

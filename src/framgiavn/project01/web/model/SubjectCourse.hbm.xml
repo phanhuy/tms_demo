@@ -4,13 +4,23 @@
 <hibernate-mapping>
 	<class name="framgiavn.project01.web.model.SubjectCourse" table="subjects_courses" 
 		dynamic-insert="true" dynamic-update="true">
-		<composite-id>
-			<key-property name="course_id" column="course_id" />
-			<key-property name="subject_id" column="subject_id" />
-		</composite-id>
+		<id name="id" type="java.lang.Integer">
+			<column name="id" length="11" />
+            <generator class="identity" />
+		</id>
+		<property name="subject_id" type="java.lang.Integer">
+            <column name="subject_id" length="11"/>
+        </property>
+        <property name="course_id" type="java.lang.Integer">
+            <column name="course_id" length="11"/>
+        </property>
 		<!--
 		<many-to-one name="course_id" class="framgiavn.project01.web.model.Course" column="id" />
 		<many-to-one name="subject_id" class="framgiavn.project01.web.model.Subject" column="id" />
 		-->           
 	</class>
+	<query name="SC.DeleteSCById">
+    	delete from SubjectCourse subjectCourse 
+    	where (subjectCourse.subject_id=:subject_id and subjectCourse.course_id=:course_id)
+    </query>
 </hibernate-mapping>
